@@ -12,5 +12,3 @@ print('test')
 for matche in matches:
     print(matche)
 
-I want to git remote set-url to new git hub not corret one listed in git remote -v
-
