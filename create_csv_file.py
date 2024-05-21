@@ -11,6 +11,7 @@ csv_file = 'comments_labels.csv'
 with open(csv_file, 'w', newline='' ) as file:
     writer = csv.writer(file)
     writer.writerow(['Comments', 'Labels'])
-    writer.writerow(data)
+    for row in data:
+        writer.writerow(data)
 
 print(f"CSV file '{csv_file}' has been created successfully.")
