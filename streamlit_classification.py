@@ -60,7 +60,7 @@ id2label = {0: "non-racism", 1: "racism", 2: "xenophobia", 3: 'non_xenophobia'}
 
 
 # function to tokenize and predict the label for a list of comments
-@st.cache_data
+#@st.cache_data
 def load_model():
     device = torch.device("cpu")
     return torch.load('./best_model.pth', map_location=device)
