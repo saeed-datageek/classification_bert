@@ -77,7 +77,7 @@ def predict_comments_df(model, tokenizer, df, max_len):
     model.load_state_dict(state_dict)
     predictions = []
     for index, row in df.iterrows():
-        comment = row['Comment']
+        comment = row['Comments']
         comment = preprocessing(comment)
         encoding = tokenizer.encode_plus(
             comment,
