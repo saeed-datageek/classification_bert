@@ -60,21 +60,29 @@ id2label = {0: "non-racism", 1: "racism", 2: "xenophobia", 3: 'non_xenophobia'}
 
 
 # function to tokenize and predict the label for a list of comments
+@st.cache_data
+def load_model():
+    device = torch.device("cpu")
+    return torch.load('./best_model.pth', map_location=device)
+
 def predict_comments_df(model, tokenizer, df, max_len):
 
 
     # Check if CUDA (GPU) is available, and move the model accordingly
-    if torch.cuda.is_available():
-        device = torch.device("cuda")
-        model = model.to(device)
-        state_dict = torch.load('./best_model.pth')
-    else:
-        # Use CPU
-        device = torch.device("cpu")
-        state_dict = torch.load('./best_model.pth', map_location=device)
+    # if torch.cuda.is_available():
+    #     device = torch.device("cuda")
+    #     model = model.to(device)
+    #     state_dict = torch.load('./best_model.pth')
+    # else:
+    #     # Use CPU
+    #     #device = torch.device("cpu")
+    #
+    #
+    #     #state_dict = torch.load('./best_model.pth', map_location=device)
+    #     state_dic = load_model()
 
     # Load the model state_dict
-    model.load_state_dict(state_dict)
+    model.load_state_dict(load_model())
     predictions = []
     for index, row in df.iterrows():
         comment = row['Comments']
