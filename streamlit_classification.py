@@ -24,7 +24,7 @@ def load_dataframe(data_file):
     return pd.read_csv(data_file)
 
 
-data_file = st.file_uploader("Upload CSV", type=['csv'])
+data_file = st.file_uploader("Upload a CSV file file that contains two columns 'Comments' and 'Labels' ", type=['csv'])
 if st.button("Process"):
     if data_file is not None:
         file_details = {"Filename": data_file.name, "FileType": data_file.type, "FileSize": data_file.size}
